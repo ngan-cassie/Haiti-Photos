@@ -2,4 +2,4 @@
 https://GitHub.com/TheVinhLuong102/H1st/archive/django.zip
 
 # Deep Learning
-TensorFlow >= 2.4.1
+TensorFlow >= 2.5.0
