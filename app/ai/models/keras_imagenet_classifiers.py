@@ -35,8 +35,8 @@ from tensorflow.keras.applications.mobilenet_v2 import (
     MobileNetV2,
     preprocess_input as mobilenet_v2_preprocess_input
 )
+from tensorflow.keras.applications import (MobileNetV3Large,)
 from tensorflow.keras.applications.mobilenet_v3 import (
-    MobileNetV3Large,
     MobileNetV3Small,
     preprocess_input as mobilenet_v3_preprocess_input
 )
