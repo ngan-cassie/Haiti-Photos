@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+
+h1st runserver /home/project/.h1st/Haiti-Photos.yml 8008
