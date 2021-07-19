@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 
+export PATH=$PATH:~/.local/bin
+
+
 cd app/
 
 h1st runscript /home/project/.h1st/Haiti-Photos.yml update_photo_list

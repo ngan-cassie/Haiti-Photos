@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 
+export PATH=$PATH:~/.local/bin
+
+
 cd app/
 
 h1st makemigrations /home/project/.h1st/Haiti-Photos.yml
