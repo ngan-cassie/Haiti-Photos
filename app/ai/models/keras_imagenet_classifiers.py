@@ -78,7 +78,7 @@ from tensorflow.keras.applications.xception import (
 
 
 class KerasImageNetClassifier(H1stModel):
-    INPUT_PREPROCESSOR = {
+    MODELS_AND_INPUT_PREPROCESSORS = {
         DenseNet121: densenet_preprocess_input,
         DenseNet169: densenet_preprocess_input,
         DenseNet201: densenet_preprocess_input,
