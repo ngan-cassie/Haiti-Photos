@@ -1,1 +1,5 @@
+# H1st AI
 https://GitHub.com/TheVinhLuong102/H1st/archive/django.zip
+
+# Deep Learning
+Keras >= 2.4.3
