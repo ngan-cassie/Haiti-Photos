@@ -5,7 +5,7 @@
 python3 -m pip install --upgrade PIP SetUpTools
 
 # install Python dependencies
-python3 -m pip install --upgrade --user -r app/requirements.txt
+python3 -m pip install --no-cache-dir --upgrade --user -r app/requirements.txt
 
 
 # install JavaScript dependencies
