@@ -2,4 +2,4 @@
 https://GitHub.com/TheVinhLuong102/H1st/archive/django.zip
 
 # Deep Learning
-Keras >= 2.4.3
+TensorFlow >= 2.4.1
