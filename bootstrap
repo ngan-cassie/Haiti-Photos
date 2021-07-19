@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+
+# upgrade PIP, SetUpTools
+python3 -m pip install --upgrade PIP SetUpTools
+
+# install Python dependencies
+python3 -m pip install --upgrade -r requirements.txt
