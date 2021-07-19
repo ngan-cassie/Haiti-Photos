@@ -9,6 +9,9 @@
   "python.linting.enabled": true,
 
   "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": [
+    "--disable", "no-name-in-module"
+  ],
 
   "python.linting.flake8Enabled": true,
 
