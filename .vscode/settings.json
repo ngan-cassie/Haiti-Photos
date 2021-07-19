@@ -11,6 +11,7 @@
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": [
     "--disable", "invalid-name",
+    "--disable", "missing-class-docstring",
     "--disable", "missing-module-docstring",
     "--disable", "no-name-in-module"
   ],
@@ -23,7 +24,8 @@
   "python.linting.pydocstyleArgs": [
     "--ignore=D100",
     "--ignore=D101",
-    "--ignore=D104"
+    "--ignore=D104",
+    "--ignore=D106",
   ],
 
   "python.linting.pycodestyleEnabled": true,
