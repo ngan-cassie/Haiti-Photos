@@ -91,7 +91,7 @@ class KerasImageNetClassifier(H1stModel):
         EfficientNetB5: efficientnet_preprocess_input,
         EfficientNetB6: efficientnet_preprocess_input,
         EfficientNetB7: efficientnet_preprocess_input,
-        
+
         InceptionResNetV2: inception_resnet_v2_preprocess_input,
         InceptionV3: inception_v3_preprocess_input,
 
