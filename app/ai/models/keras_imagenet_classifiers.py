@@ -194,7 +194,8 @@ class KerasImageNetClassifier(H1stModel):
 
         self.model_obj = model_class()
 
-    def predict(self, image_file_path: str, n_labels=5) -> Dict[str, float]:
+    def predict(self,
+                image_file_path: str, n_labels: int = 5) -> Dict[str, float]:
         self.load()
 
         # load image
