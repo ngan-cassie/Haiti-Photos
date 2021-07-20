@@ -1,7 +1,5 @@
 from h1st.django.model.api import H1stModel
 
-from django.db.models.fields import CharField
-
 from tensorflow.keras.applications.densenet import (
     DenseNet121,
     DenseNet169,
@@ -116,62 +114,6 @@ class KerasImageNetClassifier(H1stModel):
 
         Xception: xception_preprocess_input
     }
-
-    name = CharField(
-            verbose_name='Keras ImageNet Classifier Name',
-            help_text='Keras ImageNet Classifier Name',
-            max_length=255,
-            null=False,
-            blank=False,
-            choices=[
-                ('DenseNet121', 'DenseNet121'),
-                ('DenseNet169', 'DenseNet169'),
-                ('DenseNet201', 'DenseNet201'),
-
-                ('EfficientNetB0', 'EfficientNetB0'),
-                ('EfficientNetB1', 'EfficientNetB1'),
-                ('EfficientNetB2', 'EfficientNetB2'),
-                ('EfficientNetB3', 'EfficientNetB3'),
-                ('EfficientNetB4', 'EfficientNetB4'),
-                ('EfficientNetB5', 'EfficientNetB5'),
-                ('EfficientNetB6', 'EfficientNetB6'),
-                ('EfficientNetB7', 'EfficientNetB7'),
-
-                ('InceptionResNetV2', 'InceptionResNetV2'),
-                ('InceptionV3', 'InceptionV3'),
-
-                ('MobileNet', 'MobileNet'),
-                ('MobileNetV2', 'MobileNetV2'),
-                ('MobileNetV3Large', 'MobileNetV3Large'),
-                ('MobileNetV3Small', 'MobileNetV3Small'),
-
-                ('NASNetLarge', 'NASNetLarge'),
-                ('NASNetMobile', 'NASNetMobile'),
-
-                ('ResNet50', 'ResNet50'),
-                ('ResNet101', 'ResNet101'),
-                ('ResNet152', 'ResNet152'),
-
-                ('ResNet50V2', 'ResNet50V2'),
-                ('ResNet101V2', 'ResNet101V2'),
-                ('ResNet152V2', 'ResNet152V2'),
-
-                ('VGG16', 'VGG16'),
-                ('VGG19', 'VGG19'),
-
-                ('Xception', 'Xception')
-            ],
-            db_index=True,
-            default=None,
-            editable=True,
-            unique=True)
-
-    class Meta:
-        verbose_name = 'Keras ImageNet Classifier'
-        verbose_name_plural = 'Keras ImageNet Classifiers'
-
-    def __str__(self) -> str:
-        return f'"{self.name}" Keras ImageNet Classifier'
 
     def predict(self, image_file_path: str):
         ...
