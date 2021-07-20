@@ -221,10 +221,9 @@ class KerasImageNetClassifier(H1stModel):
         labels_and_predictions = zip(IMAGENET_LABELS, predictions.flatten())
 
         # sort label-prediction pairs by decreasing probability
-        sorted_labels_and_predictions = \
-            sorted(labels_and_predictions,
-                   key=lambda pair: pair[1],
-                   reverse=True)
+        sorted_labels_and_predictions = sorted(labels_and_predictions,
+                                               key=lambda pair: pair[1],
+                                               reverse=True)
 
         # return JSON dict
         return dict(sorted_labels_and_predictions[:n_labels])
