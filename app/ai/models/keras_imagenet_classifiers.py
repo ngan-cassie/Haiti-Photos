@@ -193,7 +193,7 @@ class KerasImageNetClassifier(H1stModel):
 
         self.model_obj = self.model_class()
 
-    def predict(self, image_file_path: str) -> Dict[str, float]:
+    def predict(self, image_file_path: str, n_labels=5) -> Dict[str, float]:
         self.load()
 
         # load image
@@ -221,4 +221,4 @@ class KerasImageNetClassifier(H1stModel):
 
         # return JSON dict
         return {label: float(predictions[i])
-                for i, label in enumerate(IMAGENET_LABELS)}
+                for i, label in enumerate(IMAGENET_LABELS[:n_labels])}
