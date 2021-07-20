@@ -204,7 +204,7 @@ class KerasImageNetClassifier(H1stModel):
                                     size=self.image_size,
                                     centering=(0.5, 0.5))
 
-        # convert to NumPy array
+        # convert image to NumPy array
         scaled_image_array = numpy.asarray(scaled_image, dtype=int, order=None)
 
         # make a batch of 1 array
@@ -216,9 +216,14 @@ class KerasImageNetClassifier(H1stModel):
         # predict
         predictions = self.model_obj.predict(x=prep_img_batch_arr)
 
-        # flatten predictions
-        predictions = predictions.flatten()
+        # pair labels & predictions
+        labels_and_predictions = zip(IMAGENET_LABELS, predictions.flatten())
+
+        # sort label-prediction pairs by decreasing probability
+        sorted_labels_and_predictions = \
+            sorted(labels_and_predictions,
+                   key=lambda label, prediction: prediction,
+                   reverse=True)
 
         # return JSON dict
-        return {label: float(predictions[i])
-                for i, label in enumerate(IMAGENET_LABELS[:n_labels])}
+        return dict(sorted_labels_and_predictions[:n_labels])
