@@ -77,7 +77,7 @@ from tensorflow.keras.applications.xception import (
 
 
 IMAGENET_LABELS = json.load(open(Path(__file__).parent
-                                 / 'ImageNet-Labels.json'), 'r'))
+                                 / 'ImageNet-Labels.json', 'r'))
 
 
 class KerasImageNetClassifier(H1stModel):
