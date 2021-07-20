@@ -1,5 +1,8 @@
 from h1st.django.model.api import H1stModel
 
+import json
+import numpy
+from pathlib import Path
 from PIL import Image, ImageOps
 
 from tensorflow.keras.applications.densenet import (
@@ -73,6 +76,10 @@ from tensorflow.keras.applications.xception import (
 )
 
 
+IMAGENET_LABELS = json.load(open(Path(__file__).parent
+                                 / 'ImageNet-Labels.json'), 'r'))
+
+
 class KerasImageNetClassifier(H1stModel):
     MODEL_CLASSES_AND_IMAGE_SIZES_AND_INPUT_PREPROCESSORS = {
         'DenseNet121': (DenseNet121,
@@ -84,6 +91,7 @@ class KerasImageNetClassifier(H1stModel):
         'DenseNet201': (DenseNet201,
                         (224, 224),
                         densenet_preprocess_input),
+
         'EfficientNetB0': (EfficientNetB0,
                            (224, 224),
                            efficientnet_preprocess_input),
@@ -108,12 +116,14 @@ class KerasImageNetClassifier(H1stModel):
         'EfficientNetB7': (EfficientNetB7,
                            (600, 600),
                            efficientnet_preprocess_input),
+
         'InceptionResNetV2': (InceptionResNetV2,
                               (299, 299),
                               inception_resnet_v2_preprocess_input),
         'InceptionV3': (InceptionV3,
                         (299, 299),
                         inception_v3_preprocess_input),
+
         'MobileNet': (MobileNet,
                       (224, 224),
                       mobilenet_preprocess_input),
@@ -126,12 +136,14 @@ class KerasImageNetClassifier(H1stModel):
         'MobileNetV3Small': (MobileNetV3Small,
                              (224, 224),
                              mobilenet_v3_preprocess_input),
+
         'NASNetLarge': (NASNetLarge,
                         (331, 331),
                         nasnet_preprocess_input),
         'NASNetMobile': (NASNetMobile,
                          (224, 224),
                          nasnet_preprocess_input),
+
         'ResNet50': (ResNet50,
                      (224, 224),
                      resnet_preprocess_input),
@@ -150,6 +162,7 @@ class KerasImageNetClassifier(H1stModel):
         'ResNet152V2': (ResNet152V2,
                         (224, 224),
                         resnet_v2_preprocess_input),
+
         'VGG16': (VGG16,
                   (224, 224),
                   vgg16_preprocess_input),
@@ -179,18 +192,32 @@ class KerasImageNetClassifier(H1stModel):
 
         self.model_obj = self.model_class()
 
-    def predict(self, image_file_path: str):
-        image = Image.open(fp=image_file_path, mode='r', formats=None)
-
+    def predict(self, image_file_path: str) -> dict[str, float]:
         self.load()
 
-        centered_scaled_image = ImageOps.fit(image=image,
-                                             size=self.image_size,
-                                             centering=(0.5, 0.5))
+        # load image
+        image = Image.open(fp=image_file_path, mode='r', formats=None)
 
-        preprocessed_image_array = \
-            self.preprocessor(image=centered_scaled_image)
+        # scale image to size model expects
+        scaled_image = ImageOps.fit(image=image,
+                                    size=self.image_size,
+                                    centering=(0.5, 0.5))
 
-        prediction = self.model_obj.predict(preprocessed_image_array)
+        # convert to NumPy array
+        scaled_image_array = numpy.asarray(scaled_image, dtype=int, order=None)
 
-        print(prediction)
+        # make a batch of 1 array
+        img_batch_arr = numpy.expand_dims(scaled_image_array, axis=0)
+
+        # preprocess
+        prep_img_batch_arr = self.preprocessor(img_batch_arr)
+
+        # predict
+        predictions = self.model_obj.predict(x=prep_img_batch_arr)
+
+        # flatten predictions
+        predictions = predictions.flatten()
+
+        # return JSON dict
+        return {label: float(predictions[i])
+                for i, label in enumerate(IMAGENET_LABELS)}
