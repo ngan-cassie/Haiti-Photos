@@ -67,10 +67,6 @@ from tensorflow.keras.applications.vgg19 import (
     VGG19,
     preprocess_input as vgg19_preprocess_input
 )
-from tensorflow.keras.applications.vgg19 import (
-    VGG19,
-    preprocess_input as vgg19_preprocess_input
-)
 from tensorflow.keras.applications.xception import (
     Xception,
     preprocess_input as xception_preprocess_input
