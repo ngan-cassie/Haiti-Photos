@@ -7,4 +7,4 @@ def run():
     for model in tqdm(KerasImageNetClassifier.objects.all(),
                       total=KerasImageNetClassifier.objects.count()):
         print(model)
-        model.load()
+        print(model.predict('/home/project/test.jpg'))
