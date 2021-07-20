@@ -9,7 +9,7 @@ apt install -y htop vim
 python3 -m pip install --upgrade PIP SetUpTools
 
 # uninstall any legacy TensorFlow
-python3 -m pip uninstall TensorFlow
+python3 -m pip uninstall -y TensorFlow
 
 # install Python dependencies
 python3 -m pip install --no-cache-dir --upgrade --user -r app/requirements.txt
