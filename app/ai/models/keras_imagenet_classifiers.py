@@ -76,7 +76,7 @@ from tensorflow.keras.applications.xception import (
 )
 
 
-IMAGENET_LABELS = json.load(open(Path(__file__).parent
+IMAGENET_LABELS = json.load(open(Path(__file__).parent.parent
                                  / 'ImageNet-Labels.json', 'r'))
 
 
