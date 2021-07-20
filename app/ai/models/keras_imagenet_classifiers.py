@@ -1,9 +1,10 @@
-from h1st.django.model.api import H1stModel
-
 import json
 import numpy
 from pathlib import Path
 from PIL import Image, ImageOps
+from typing import Dict
+
+from h1st.django.model.api import H1stModel
 
 from tensorflow.keras.applications.densenet import (
     DenseNet121,
@@ -192,7 +193,7 @@ class KerasImageNetClassifier(H1stModel):
 
         self.model_obj = self.model_class()
 
-    def predict(self, image_file_path: str) -> dict[str, float]:
+    def predict(self, image_file_path: str) -> Dict[str, float]:
         self.load()
 
         # load image
