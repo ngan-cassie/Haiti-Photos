@@ -222,7 +222,7 @@ class KerasImageNetClassifier(H1stModel):
         # sort label-prediction pairs by decreasing probability
         sorted_labels_and_predictions = \
             sorted(labels_and_predictions,
-                   key=lambda label, prediction: prediction,
+                   key=(lambda label, prediction: prediction),
                    reverse=True)
 
         # return JSON dict
