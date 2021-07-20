@@ -1,8 +1,9 @@
 import json
-import numpy
 from pathlib import Path
-from PIL import Image, ImageOps
 from typing import Dict
+
+import numpy
+from PIL import Image, ImageOps
 
 from h1st.django.model.api import H1stModel
 
@@ -187,11 +188,11 @@ class KerasImageNetClassifier(H1stModel):
             self.MODEL_CLASSES_AND_IMAGE_SIZES_AND_INPUT_PREPROCESSORS, \
             f'*** {self.name} INVALID ***'
 
-        self.model_class, self.image_size, self.preprocessor = \
+        model_class, self.image_size, self.preprocessor = \
             self.MODEL_CLASSES_AND_IMAGE_SIZES_AND_INPUT_PREPROCESSORS[
                 self.name]
 
-        self.model_obj = self.model_class()
+        self.model_obj = model_class()
 
     def predict(self, image_file_path: str, n_labels=5) -> Dict[str, float]:
         self.load()
