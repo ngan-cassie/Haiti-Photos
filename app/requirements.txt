@@ -5,4 +5,4 @@ https://GitHub.com/TheVinhLuong102/H1st/archive/django.zip
 TensorFlow >= 2.5.0
 
 # Image Processing
-PIL >= 1.1.6
+Pillow >= 8.1.1
