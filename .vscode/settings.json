@@ -14,10 +14,10 @@
 
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": [
+    "--disable", "attribute-defined-outside-init",
     "--disable", "invalid-name",
     "--disable", "missing-class-docstring",
     "--disable", "missing-module-docstring",
-    "--disable", "no-member",
     "--disable", "no-name-in-module",
     "--disable", "relative-beyond-top-level"
   ],
