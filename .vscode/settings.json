@@ -29,6 +29,7 @@
   "python.linting.pydocstyleArgs": [
     "--ignore=D100",
     "--ignore=D101",
+    "--ignore=D102",
     "--ignore=D104",
     "--ignore=D106"
   ],
