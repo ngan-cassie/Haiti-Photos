@@ -177,6 +177,10 @@ class KerasImageNetClassifier(H1stModel):
                      xception_preprocess_input)
     }
 
+    class Meta(H1stModel.Meta):
+        verbose_name = 'Keras ImageNet Classifier'
+        verbose_name_plural = 'Keras ImageNet Classifiers'
+
     def save(self, *args, **kwargs):
         assert self.name in \
             self.MODEL_CLASSES_AND_IMAGE_SIZES_AND_INPUT_PREPROCESSORS, \
