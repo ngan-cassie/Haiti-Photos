@@ -26,7 +26,7 @@
 
   "python.linting.flake8Enabled": true,
 
-  "python.linting.mypyEnabled": true,
+  "python.linting.mypyEnabled": false,   // too many false positives
 
   "python.linting.pydocstyleEnabled": true,
   "python.linting.pydocstyleArgs": [
