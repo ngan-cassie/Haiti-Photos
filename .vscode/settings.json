@@ -2,13 +2,12 @@
   "editor.rulers": [79],
 
   "files.exclude": {
+    "**/.git": true,
+    "**/.mypy_cache": true,
     "**/*.pyc": {"when": "$(basename).py"}, 
     "**/__pycache__": true,
-    "**/.mypy_cache": true,
-    "**/.git": true
+    "**/.ropeproject": true,
   },
-
-  "git.ignoreLimitWarning": true,
 
   "python.linting.enabled": true,
 
@@ -26,9 +25,9 @@
 
   "python.linting.flake8Enabled": true,
 
-  "python.linting.mypyEnabled": false,   // too annoying
+  "python.linting.mypyEnabled": false,
 
-  "python.linting.pydocstyleEnabled": false,   // too annoying
+  "python.linting.pydocstyleEnabled": false,
 
   "python.linting.pycodestyleEnabled": true,
 
@@ -37,6 +36,4 @@
   "python.linting.pylamaEnabled": true,
 
   "python.linting.banditEnabled": true,
-
-  "python.python.defaultInterpreterPath": "/usr/local/bin/python3"
 }
