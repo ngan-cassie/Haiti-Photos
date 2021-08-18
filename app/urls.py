@@ -16,9 +16,6 @@ urlpatterns = [
     # H1st URLs
     path('h1st/', include('h1st.django.urls')),
 
-    # Query Profiling URLs
-    path('silk/', include('silk.urls', namespace='silk')),
-
     # Data URLs
     # path('data/', include('data.urls'))
 ]
